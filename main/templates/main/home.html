@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    {{ user|json_script:"mydata" }}
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
+</head>
+<body>
+    <header>
+        <nav>
+            <input type="button" value="">
+            <input type="search" name="" id="search-username" placeholder="검색">
+            <ul>
+                <li><a href="#"></a> 홈
+                <li><a href="#"></a> 프로필 </li>
+            </ul>
+        
+        </nav>
+    </header>
+
+    <h1 id="name"> [[ user.username ]] </h1>
+    <input type="button" value="logout" id="logout_btn">
+    <input type="button" value="add" id="append_btn">
+
+    <div>
+        <div class="container" id="storyContainer">
+
+        </div>
+
+        <div id="timeline">
+            <article v-for="(feed, index) in feeds" class="feed"> 
+                <div class="container">
+                    <div id="profileContainer">
+                        <a href=""> <img src="" alt="" id="profile_img"> </a>
+                        <a href="" class="username"> [[ feed.author ]]  </a>
+                    </div>
+                    
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">1</div>
+                            <div class="swiper-slide">2</div>
+                            <div class="swiper-slide">3</div>
+                        </div>
+            
+                        <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+                        <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+                        
+                        <!-- 페이징 -->
+                        <span class="swiper-pagination"></span>
+                   
+                    </div>
+
+                    <div class="abcContainer">
+                        
+                        <div class="buttonContainer">
+                            <div>
+                                <img src="" alt="" srcset="">
+                                <img src="" alt="" srcset="">
+                            </div>
+                        </div>
+                        
+                        <div> a 님 외 b 명이 좋아합니다 </div> 
+                        
+                        <div>
+                            <a href="" id=author class="username">  [[ feed.author ]] </a> 
+                            <span class="caption">  [[ feed.caption ]] </span>
+                        </div>
+                        
+                        <a href="" id="showAllComment">댓글 n개 모두 보기</a>
+
+                        <div id="commentContainer">
+                            <div v-for="comment in feed.comments">
+                                <a href="" class="username"> [[ comment.author ]] </a>
+                                <span class="caption"> [[ comment.content ]] </span>
+                            </div>
+                        </div>
+
+                        <a href="" id="published"> n시간 전 </a>
+                        
+                    </div>
+                    <div class="container" id="writeComment">
+                        <textarea placeholder="댓글 달기" class="textareaComment"></textarea>
+                        <input type="button" value="게시" class="writeCommentBtn" disabled>
+                    </div> 
+                </div>
+            </article>
+        </div>
+
+
+    </div>
+
+    <input type="button" value="+" id='floatBtn'>
+
+    <script type="text/javascript" src="{% static 'javascript/home.js' %}"></script>
+</body>
+</html>
+

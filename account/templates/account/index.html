@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>로그인</title>
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/index.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+</head>
+<body>
+
+    <div class="container">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <input type="email" name="email" id="input-email" placeholder="이메일">
+            
+                <input type="password" name="password" id="input-password" placeholder="비밀번호">
+        
+                <input type="submit" disabled id="signin-btn" value="로그인" class="submit-btn clickable">
+                
+                </form>
+            
+            <div class="container-line">
+                <div class="line">또는</div>
+            </div>
+            
+            <p id="error-message"> {% if error_message %} {{ error_message }} {% endif %} </p> 
+
+
+            <a href="" class="clickable">비밀번호를 잊으셨나요?</a>
+    </div>
+    
+
+    <div class="container" id="signup-container">
+        <p> 
+            계정이 없으신가요?
+
+            <a href="./signup" class="clickable" id="signup-btn" >가입하기</a>
+        </p>
+    </div>
+
+
+</body>
+</html>
+

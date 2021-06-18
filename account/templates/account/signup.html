@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/signup.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+
+<body>
+    {% if error_message %} {{ error_message }} {% endif %}
+
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <input type="email" name="email" id="input-email" placeholder="이메일" maxlength="50">
+            <p class="error_msg" id="error_email">틀림</p>
+            <input type="text" name="username" id="input-username" placeholder="성명" maxlength="30">
+            <input type="tel" name="phone" id="input-phone" placeholder="휴대폰 번호" maxlength="11">
+            <p class="error_msg" id="error_phone">틀림</p>
+            <input type="password" name="password" id="input-password" placeholder="비밀번호">
+            <p class="error_msg" id="error_password">틀림</p>
+            <input type="password" name="password-check" id="input-password-check" placeholder="비밀번호 확인">
+            <p class="error_msg" id="error_password_check">틀림</p>
+
+            <input type="submit" disabled id="signup-btn" value="회원가입" class="submit-btn clickable">
+            
+        </form>
+            
+    </div>
+    
+</body>
+</html>
